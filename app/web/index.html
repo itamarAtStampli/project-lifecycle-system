@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lifecycle Orchestrator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Workflow Orchestrator</p>
+        <h1>Ship with discipline, not chaos.</h1>
+        <p class="subtitle">From requirement to release with gated approvals, parallel execution, and learning feedback.</p>
+      </div>
+      <div class="status-pill">
+        <span>System</span>
+        <strong id="health">Checking…</strong>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card intake">
+        <h2>Start a New Lifecycle</h2>
+        <label>Requirement description</label>
+        <textarea id="reqText" placeholder="Describe the product request in plain language..."></textarea>
+
+        <div class="split">
+          <div>
+            <label>Jira link (optional)</label>
+            <input id="jiraLink" placeholder="https://your-domain.atlassian.net/browse/KEY-123" />
+          </div>
+          <div>
+            <label>Title</label>
+            <input id="reqTitle" placeholder="Tic-tac-toe game" />
+          </div>
+        </div>
+
+        <button id="startBtn">Start Workflow</button>
+        <button id="runAgentsBtn" class="secondary">Run Agents (Bedrock)</button>
+        <p class="hint">Intake triggers preflight analysis before PO refinement.</p>
+      </div>
+
+      <div class="card flow">
+        <h2>Flow Map</h2>
+        <svg id="flowMap" viewBox="0 0 760 220" role="img" aria-label="Workflow diagram"></svg>
+        <div class="actions">
+          <button id="failTestBtn" class="ghost">Simulate Test Failure</button>
+        </div>
+      </div>
+
+      <div class="card timeline">
+        <h2>Workflow Timeline</h2>
+        <ol id="timelineList"></ol>
+        <div class="actions">
+          <button id="nextStateBtn">Advance State</button>
+          <button id="refreshBtn">Refresh</button>
+        </div>
+      </div>
+
+      <div class="card approvals">
+        <h2>Milestone Approvals</h2>
+        <div class="approval-form">
+          <select id="roleSelect">
+            <option>ProductOwner</option>
+            <option>CodeReviewer</option>
+            <option>QATester</option>
+            <option>ReleaseManager</option>
+          </select>
+          <select id="milestoneSelect">
+            <option>PO_Refinement</option>
+            <option>Code_Review</option>
+            <option>QA_E2E</option>
+            <option>PO_Acceptance</option>
+            <option>Release</option>
+          </select>
+          <input id="signedBy" placeholder="Signed by" />
+          <button id="approveBtn">Approve</button>
+        </div>
+        <div id="approvalList" class="approval-list"></div>
+      </div>
+
+      <div class="card tasks">
+        <h2>Active Parallel Tasks</h2>
+        <div id="taskBoard" class="task-board"></div>
+      </div>
+
+      <div class="card agent-output">
+        <h2>Agent Output</h2>
+        <div id="agentOutput" class="agent-output-body"></div>
+      </div>
+
+      <div class="card artifacts">
+        <h2>Artifacts</h2>
+        <ul>
+          <li>PRD + Acceptance Criteria</li>
+          <li>Task Breakdown + Estimates</li>
+          <li>Test Plan + Coverage</li>
+          <li>QA Report + Defect Log</li>
+          <li>Release Notes</li>
+        </ul>
+      </div>
+
+      <div class="card decisions">
+        <h2>Decision Log</h2>
+        <div id="eventList" class="event-list"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
