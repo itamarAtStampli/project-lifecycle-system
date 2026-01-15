@@ -11,6 +11,13 @@ python3 /Users/itamarlev/Documents/ai applications/project-lifecycle-system/app/
 
 Then open: http://localhost:8080
 
+## Virtual environment (recommended)
+```bash
+python3 -m venv /Users/itamarlev/Documents/ai applications/project-lifecycle-system/.venv
+source /Users/itamarlev/Documents/ai applications/project-lifecycle-system/.venv/bin/activate
+pip install flask boto3
+```
+
 ## Notes
 - This is a dependency-free scaffold with in-memory storage.
 
@@ -19,7 +26,7 @@ This scaffold can call AWS Bedrock to generate acceptance criteria and tasks.
 
 1) Install boto3:
 ```bash
-python3 -m pip install boto3
+python3 -m pip install boto3 flask
 ```
 
 2) Export environment variables:
@@ -31,6 +38,12 @@ export BEDROCK_MODEL_ID=anthropic.claude-3-sonnet-20240229-v1:0
 3) Click **Run Agents (Bedrock)** in the UI after intake.
 
 Note: The backend runs a multi-agent sequence (PO -> Team Lead -> Developer -> QA). Adjust the model ID and payload format to match your chosen model family.
+
+## Jira env loading
+If `~/.jira.env` exists, the backend loads it automatically at startup. You can override with:\n
+```bash
+export ENV_FILE=/path/to/.jira.env
+```
 
 ## Optional integrations
 Jira:
