@@ -521,8 +521,9 @@ def main():
         return
 
     port = int(os.environ.get("PORT", "8080"))
-    print(f"Serving UI on http://localhost:{port}")
-    app.run(host="0.0.0.0", port=port)
+    host = os.environ.get("HOST", "127.0.0.1")
+    print(f"Serving UI on http://{host}:{port}")
+    app.run(host=host, port=port)
 
 
 if __name__ == "__main__":
